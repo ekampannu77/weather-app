@@ -34,13 +34,15 @@ export default function Home() {
 
       {/* Hero / Search */}
       <div className="text-center py-8">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
-          ⛅ Real-Time Weather
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400 mb-6">
-          Search by city, ZIP code, GPS coordinates, or landmark
-        </p>
-        <SearchBar onSearch={handleSearch} loading={isLoading} />
+        <div className="inline-block w-full max-w-2xl mx-auto px-8 py-8 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-md shadow-lg">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+            ⛅ Real-Time Weather
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">
+            Search by city, ZIP code, GPS coordinates, or landmark
+          </p>
+          <SearchBar onSearch={handleSearch} loading={isLoading} />
+        </div>
       </div>
 
       {/* Error */}

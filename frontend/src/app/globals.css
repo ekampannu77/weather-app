@@ -9,7 +9,6 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -23,43 +22,54 @@ body {
    Weather Particle Animations
    ============================================================ */
 
+/* Rain — straight drop (container is rotated for diagonal effect) */
 @keyframes rain-fall {
-  from {
-    transform: translateY(-20px);
-    opacity: 0.6;
-  }
-  to {
-    transform: translateY(100vh);
-    opacity: 0.2;
-  }
+  0%   { transform: translateY(-30px); opacity: 0; }
+  5%   { opacity: 0.75; }
+  100% { transform: translateY(110vh); opacity: 0.1; }
 }
 
+/* Snow — drifts side to side as it falls */
 @keyframes snow-drift {
-  0%   { transform: translateY(-10px) translateX(0px);  opacity: 0; }
-  10%  { opacity: 0.8; }
-  50%  { transform: translateY(45vh)  translateX(14px); }
-  100% { transform: translateY(100vh) translateX(-10px); opacity: 0.2; }
+  0%   { transform: translateY(-15px) translateX(0px);  opacity: 0; }
+  8%   { opacity: 0.9; }
+  30%  { transform: translateY(28vh)  translateX(18px); }
+  60%  { transform: translateY(60vh)  translateX(-14px); }
+  85%  { transform: translateY(88vh)  translateX(10px); }
+  100% { transform: translateY(110vh) translateX(-6px); opacity: 0.2; }
 }
 
-@keyframes sun-pulse {
-  0%, 100% { opacity: 0.2; transform: scaleY(0.85); }
-  50%       { opacity: 0.45; transform: scaleY(1.15); }
+/* Sun — core breathes */
+@keyframes sun-glow {
+  0%, 100% { transform: scale(1);    opacity: 0.8; }
+  50%       { transform: scale(1.18); opacity: 1;   }
 }
 
-@keyframes cloud-bob {
+/* Sun rays — slow spin */
+@keyframes sun-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Clouds — gentle float */
+@keyframes cloud-drift {
   0%   { transform: translateX(0px)  translateY(0px);  }
-  50%  { transform: translateX(20px) translateY(-8px); }
+  50%  { transform: translateX(30px) translateY(-10px); }
   100% { transform: translateX(0px)  translateY(0px);  }
 }
 
+/* Thunderstorm lightning — irregular bright flash */
 @keyframes lightning-flash {
-  0%, 87%, 100% { opacity: 0; }
-  89%, 95%      { opacity: 0.7; }
-  92%           { opacity: 0.15; }
+  0%, 80%, 100% { opacity: 0; }
+  82%           { opacity: 0.95; }
+  84%           { opacity: 0.05; }
+  86%           { opacity: 0.9; }
+  90%           { opacity: 0; }
 }
 
+/* Fog — slow horizontal sweep */
 @keyframes fog-slide {
-  0%   { transform: translateX(-4%) scaleX(1);     opacity: 0.25; }
-  50%  { transform: translateX(4%)  scaleX(1.05);  opacity: 0.45; }
-  100% { transform: translateX(-4%) scaleX(1);     opacity: 0.25; }
+  0%   { transform: translateX(-6%) scaleX(1.0); opacity: 0.3; }
+  50%  { transform: translateX(4%)  scaleX(1.1); opacity: 0.6; }
+  100% { transform: translateX(-6%) scaleX(1.0); opacity: 0.3; }
 }
