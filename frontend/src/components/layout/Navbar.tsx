@@ -13,7 +13,6 @@ export default function Navbar() {
   const links = [
     { href: '/', label: '🌤️ Weather' },
     { href: '/history', label: '📋 History' },
-    { href: '/about', label: 'ℹ️ About' },
   ];
 
   return (
