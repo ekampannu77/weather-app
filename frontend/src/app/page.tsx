@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from '@/components/search/SearchBar';
 import CurrentWeatherCard from '@/components/weather/CurrentWeatherCard';
 import FiveDayForecast from '@/components/weather/FiveDayForecast';
@@ -14,10 +14,12 @@ import { useCurrentWeather } from '@/hooks/useCurrentWeather';
 import { useForecast } from '@/hooks/useForecast';
 
 export default function Home() {
-  const [query, setQuery] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') return localStorage.getItem('lastCity');
-    return null;
-  });
+  const [query, setQuery] = useState<string | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('lastCity');
+    if (saved) setQuery(saved);
+  }, []);
 
   const weatherQuery = useCurrentWeather(query);
   const forecastQuery = useForecast(query);
