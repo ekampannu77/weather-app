@@ -7,11 +7,13 @@ import FiveDayForecast from '@/components/weather/FiveDayForecast';
 import GoogleMapEmbed from '@/components/location/GoogleMapEmbed';
 import YouTubePanel from '@/components/location/YouTubePanel';
 import ClothingSuggestion from '@/components/weather/ClothingSuggestion';
+import TemperatureTrendChart from '@/components/weather/TemperatureTrendChart';
 import ErrorAlert from '@/components/ui/ErrorAlert';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import WeatherBackground from '@/components/ui/WeatherBackground';
 import { useCurrentWeather } from '@/hooks/useCurrentWeather';
 import { useForecast } from '@/hooks/useForecast';
+import { groupForecastByDay } from '@/lib/utils';
 
 export default function Home() {
   const [query, setQuery] = useState<string | null>(null);
@@ -68,7 +70,10 @@ export default function Home() {
           <CurrentWeatherCard weather={weatherQuery.data} />
 
           {forecastQuery.data && (
-            <FiveDayForecast forecast={forecastQuery.data} />
+            <>
+              <FiveDayForecast forecast={forecastQuery.data} />
+              <TemperatureTrendChart days={groupForecastByDay(forecastQuery.data.list)} />
+            </>
           )}
 
           {/* Clothing + YouTube side by side */}
