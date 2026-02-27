@@ -63,9 +63,6 @@ public class HistoricalQueryService {
 
     public Page<HistoricalQueryResponse> getAllQueries(int page, int size, String city) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
-        if (city == null || city.isBlank()) {
-            return queryRepository.findAll(pageable).map(q -> toResponse(q, false));
-        }
         return queryRepository.findAllWithFilter(city, pageable)
                 .map(q -> toResponse(q, false));
     }
