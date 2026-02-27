@@ -58,7 +58,7 @@ export default function TemperatureTrendChart({ days }: Props) {
   }));
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-5 w-full transition-colors duration-300">
+    <div className="bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg p-5 w-full transition-colors duration-300">
       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
         Temperature Trend
       </h3>

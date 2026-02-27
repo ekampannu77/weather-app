@@ -21,13 +21,13 @@ export default function GoogleMapEmbed({ lat, lon, locationName }: Props) {
 
   if (error) return null;
   if (!embedUrl) return (
-    <div className="bg-gray-100 rounded-2xl h-64 flex items-center justify-center text-gray-400">
+    <div className="bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl h-64 flex items-center justify-center text-gray-500">
       Loading map...
     </div>
   );
 
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden w-full">
+    <div className="bg-white/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg overflow-hidden w-full">
       <div className="px-5 pt-4 pb-2">
         <h3 className="text-lg font-semibold text-gray-700">
           📍 {locationName || `${lat.toFixed(2)}, ${lon.toFixed(2)}`}

@@ -13,13 +13,13 @@ export default function FiveDayForecast({ forecast }: Props) {
   const days = groupForecastByDay(forecast.list);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-5 w-full transition-colors duration-300">
+    <div className="bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg p-5 w-full transition-colors duration-300">
       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">5-Day Forecast</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {days.map((day) => (
           <div
             key={day.date}
-            className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-3 text-center"
+            className="flex flex-col items-center bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 rounded-xl p-3 text-center"
           >
             <p className="font-semibold text-gray-600 dark:text-gray-300 text-sm">{day.dayName}</p>
             <span className="text-3xl my-2">{getWeatherIcon(day.weatherId, day.icon)}</span>

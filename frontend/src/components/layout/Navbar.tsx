@@ -16,7 +16,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm sticky top-0 z-40 transition-colors duration-300">
+    <nav className="bg-white/30 dark:bg-gray-900/40 backdrop-blur-md border-b border-white/50 dark:border-white/10 shadow-sm sticky top-0 z-40 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-600 dark:text-blue-400">
           <span>⛅</span>

@@ -22,7 +22,7 @@ export default function YouTubePanel({ location }: Props) {
   }, [location]);
 
   if (loading) return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-5 transition-colors duration-300">
+    <div className="bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg p-5 transition-colors duration-300">
       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3">📹 Videos about {location}</h3>
       <p className="text-gray-400 dark:text-gray-500 text-sm">Loading videos...</p>
     </div>
@@ -31,7 +31,7 @@ export default function YouTubePanel({ location }: Props) {
   if (videos.length === 0) return null;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden w-full transition-colors duration-300">
+    <div className="bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg overflow-hidden w-full transition-colors duration-300">
       {/* Header */}
       <div className="bg-gradient-to-r from-red-500 to-red-700 text-white p-5">
         <div className="flex items-center justify-between mb-1">
@@ -49,9 +49,8 @@ export default function YouTubePanel({ location }: Props) {
             href={v.watchUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex gap-3 rounded-xl border border-gray-100 dark:border-gray-700
-                       hover:border-red-200 dark:hover:border-red-700
-                       hover:bg-red-50 dark:hover:bg-red-900/20
+            className="flex gap-3 rounded-xl border border-white/40 dark:border-white/10
+                       hover:border-red-300/50 hover:bg-red-500/10
                        transition-colors p-2 group"
           >
             <img

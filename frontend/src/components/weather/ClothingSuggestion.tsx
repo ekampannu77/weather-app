@@ -45,7 +45,7 @@ export default function ClothingSuggestion({ query }: Props) {
   });
 
   if (isLoading) return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 transition-colors duration-300">
+    <div className="bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg p-6 transition-colors duration-300">
       <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3">👗 What to Wear Today</h3>
       <LoadingSpinner />
     </div>
@@ -64,7 +64,7 @@ export default function ClothingSuggestion({ query }: Props) {
   ].filter(s => s.items && s.items.length > 0);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden w-full transition-colors duration-300">
+    <div className="bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-2xl shadow-lg overflow-hidden w-full transition-colors duration-300">
       {/* Header — gradient stays vivid in both modes */}
       <div className={`bg-gradient-to-r ${gradient} text-white p-5`}>
         <div className="flex items-center justify-between mb-1">
@@ -82,7 +82,7 @@ export default function ClothingSuggestion({ query }: Props) {
         {/* Clothing Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {sections.map(({ label, items }) => (
-            <div key={label} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-3">
+            <div key={label} className="bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 rounded-xl p-3">
               <p className="font-semibold text-gray-700 dark:text-gray-200 text-sm mb-2">{label}</p>
               <ul className="space-y-1">
                 {items.map((item, i) => (
@@ -98,7 +98,7 @@ export default function ClothingSuggestion({ query }: Props) {
 
         {/* Activity Advice */}
         {data.activityAdvice && (
-          <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 rounded-xl p-3 flex gap-2">
+          <div className="bg-blue-500/10 border border-blue-300/30 dark:border-blue-500/20 rounded-xl p-3 flex gap-2">
             <span className="text-xl flex-shrink-0">🗺️</span>
             <div>
               <p className="text-sm font-semibold text-blue-800 dark:text-blue-300">Tourist Tip</p>

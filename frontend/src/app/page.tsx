@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* Hero / Search */}
       <div className="text-center py-8">
-        <div className="inline-block w-full max-w-2xl mx-auto px-8 py-8 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-md shadow-lg">
+        <div className="inline-block w-full max-w-2xl mx-auto px-8 py-8 rounded-2xl bg-white/40 dark:bg-gray-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-lg">
           <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
             ⛅ Real-Time Weather
           </h1>
