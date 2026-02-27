@@ -14,13 +14,17 @@ import { useCurrentWeather } from '@/hooks/useCurrentWeather';
 import { useForecast } from '@/hooks/useForecast';
 
 export default function Home() {
-  const [query, setQuery] = useState<string | null>(null);
+  const [query, setQuery] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') return localStorage.getItem('lastCity');
+    return null;
+  });
 
   const weatherQuery = useCurrentWeather(query);
   const forecastQuery = useForecast(query);
 
   const handleSearch = (q: string) => {
     setQuery(q);
+    localStorage.setItem('lastCity', q);
   };
 
   const isLoading = weatherQuery.isLoading || forecastQuery.isLoading;

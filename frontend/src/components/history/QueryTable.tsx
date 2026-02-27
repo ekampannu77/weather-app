@@ -8,6 +8,7 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorAlert from '@/components/ui/ErrorAlert';
 import DeleteConfirmModal from './DeleteConfirmModal';
 import ExportButtons from './ExportButtons';
+import { useUnit } from '@/context/UnitContext';
 import toast from 'react-hot-toast';
 
 interface Props {
@@ -19,6 +20,13 @@ export default function QueryTable({ onEdit }: Props) {
   const [deleteTarget, setDeleteTarget] = useState<HistoricalQueryResponse | null>(null);
   const { data, isLoading, error } = useHistoricalQueries(page, 10);
   const deleteMutation = useDeleteQuery();
+  const { unit } = useUnit();
+
+  const toDisplay = (c: number | null | undefined) => {
+    if (c == null) return '—';
+    if (unit === 'F') return `${((c * 9) / 5 + 32).toFixed(1)}`;
+    return `${c}`;
+  };
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
@@ -45,32 +53,32 @@ export default function QueryTable({ onEdit }: Props) {
   return (
     <>
       <div className="overflow-x-auto rounded-2xl shadow-md">
-        <table className="min-w-full bg-white text-sm">
+        <table className="min-w-full bg-white dark:bg-gray-800 text-sm">
           <thead>
-            <tr className="bg-gray-50 text-gray-600 font-semibold text-left">
+            <tr className="bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-semibold text-left">
               <th className="px-4 py-3">Location</th>
               <th className="px-4 py-3">Start Date</th>
               <th className="px-4 py-3">End Date</th>
-              <th className="px-4 py-3">Avg °C</th>
-              <th className="px-4 py-3">Min °C</th>
-              <th className="px-4 py-3">Max °C</th>
+              <th className="px-4 py-3">Avg °{unit}</th>
+              <th className="px-4 py-3">Min °{unit}</th>
+              <th className="px-4 py-3">Max °{unit}</th>
               <th className="px-4 py-3">Precip (mm)</th>
               <th className="px-4 py-3">Notes</th>
               <th className="px-4 py-3">Export</th>
               <th className="px-4 py-3">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
             {data.content.map((q) => (
-              <tr key={q.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-4 py-3 font-medium text-gray-800">{q.displayName}</td>
-                <td className="px-4 py-3 text-gray-600">{formatDate(q.startDate)}</td>
-                <td className="px-4 py-3 text-gray-600">{formatDate(q.endDate)}</td>
-                <td className="px-4 py-3 text-center">{q.avgTempCelsius ?? '—'}</td>
-                <td className="px-4 py-3 text-center text-blue-600">{q.minTempCelsius ?? '—'}</td>
-                <td className="px-4 py-3 text-center text-red-500">{q.maxTempCelsius ?? '—'}</td>
-                <td className="px-4 py-3 text-center">{q.avgPrecipitation ?? '—'}</td>
-                <td className="px-4 py-3 text-gray-500 max-w-xs truncate">{q.userNotes || '—'}</td>
+              <tr key={q.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td className="px-4 py-3 font-medium text-gray-800 dark:text-gray-100">{q.displayName}</td>
+                <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{formatDate(q.startDate)}</td>
+                <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{formatDate(q.endDate)}</td>
+                <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-300">{toDisplay(q.avgTempCelsius)}</td>
+                <td className="px-4 py-3 text-center text-blue-600 dark:text-blue-400">{toDisplay(q.minTempCelsius)}</td>
+                <td className="px-4 py-3 text-center text-red-500 dark:text-red-400">{toDisplay(q.maxTempCelsius)}</td>
+                <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-300">{q.avgPrecipitation ?? '—'}</td>
+                <td className="px-4 py-3 text-gray-500 dark:text-gray-400 max-w-xs truncate">{q.userNotes || '—'}</td>
                 <td className="px-4 py-3">
                   <ExportButtons queryId={q.id} />
                 </td>

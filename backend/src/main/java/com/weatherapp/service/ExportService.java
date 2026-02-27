@@ -171,7 +171,6 @@ public class ExportService {
         StringBuilder sb = new StringBuilder();
         sb.append("# Weather Query History\n\n");
         sb.append("---\n\n");
-        sb.append("---\n\n");
 
         sb.append("| Location | Start Date | End Date | Avg °C | Min °C | Max °C | Precip (mm) | Wind (km/h) |\n");
         sb.append("|----------|-----------|----------|--------|--------|--------|-------------|-------------|\n");
