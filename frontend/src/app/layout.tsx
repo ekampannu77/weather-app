@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'WeatherApp — PM Accelerator',
-  description: 'Full Stack Weather Application — AI Engineer Intern Technical Assessment by Esha Kampannu',
+  description: 'Full Stack Weather Application — AI Engineer Intern Technical Assessment by Ekamnoor Singh Pannu',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

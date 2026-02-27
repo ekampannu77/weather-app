@@ -20,7 +20,7 @@ PM Accelerator is a product management training and career accelerator program. 
 - 5-day forecast with daily breakdowns
 - Geolocation support ("Use My Location")
 - Animated weather backgrounds that change based on live conditions (rain, snow, sun, thunderstorm, fog, clouds)
-- Clothing suggestions powered by AI (Claude API)
+- Clothing suggestions powered by AI
 - Dark mode support
 - °C / °F unit toggle
 - Last searched city persisted in localStorage
