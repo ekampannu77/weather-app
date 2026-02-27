@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ============================================================
+   Weather Particle Animations
+   ============================================================ */
+
+@keyframes rain-fall {
+  from {
+    transform: translateY(-20px);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(100vh);
+    opacity: 0.2;
+  }
+}
+
+@keyframes snow-drift {
+  0%   { transform: translateY(-10px) translateX(0px);  opacity: 0; }
+  10%  { opacity: 0.8; }
+  50%  { transform: translateY(45vh)  translateX(14px); }
+  100% { transform: translateY(100vh) translateX(-10px); opacity: 0.2; }
+}
+
+@keyframes sun-pulse {
+  0%, 100% { opacity: 0.2; transform: scaleY(0.85); }
+  50%       { opacity: 0.45; transform: scaleY(1.15); }
+}
+
+@keyframes cloud-bob {
+  0%   { transform: translateX(0px)  translateY(0px);  }
+  50%  { transform: translateX(20px) translateY(-8px); }
+  100% { transform: translateX(0px)  translateY(0px);  }
+}
+
+@keyframes lightning-flash {
+  0%, 87%, 100% { opacity: 0; }
+  89%, 95%      { opacity: 0.7; }
+  92%           { opacity: 0.15; }
+}
+
+@keyframes fog-slide {
+  0%   { transform: translateX(-4%) scaleX(1);     opacity: 0.25; }
+  50%  { transform: translateX(4%)  scaleX(1.05);  opacity: 0.45; }
+  100% { transform: translateX(-4%) scaleX(1);     opacity: 0.25; }
+}
